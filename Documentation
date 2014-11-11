@@ -1,0 +1,102 @@
+AUGMENTED REALITY USING 3D MODEL
+
+File:main.cpp
+
+int match ( vector < pair < Point2f , Point3f > > & OUTPUT , vector <  KeyPoint > & INPUT ,
+vector < KeyPoint > & INPUT , vector < vector <Point2f> > & OUTPUT, vector < vector
+<Point3f> > &, OUTPUT Mat & INPUT , Mat & INPUT )
+Calibration of camera takes place here.
+Argument #1 : Returns SELECTED 2D ­ 3D pair for Query Image
+Argument #2 : Keypoint of Database Image
+Argument #3 : Keypoint of Query Image
+Argument #4 : 2D Points on Query Image
+Argument #5 : 3D Points in Real World
+Argument #6 : Descriptors of Database Image
+Argument #7 : Descriptors of Query Image
+Return number of 2D­3D points for the query image and calibrates the camera.
+-----------------------------------------------------------------------------------------------------------
+
+void read_key ( vector < pair < Point2f , Point3f > > & OUTPUT , vector <KeyPoint > & OUTPUT
+, vector<KeyPoint> & OUTPUT, Mat &  OUTPUT , Mat &  OUTPUT )
+Reads/Computes the keypoints and descriptors of query and database image and returns them
+Argument #1 : Returns SELECTED 2D ­ 3D pair for DatabaseImage
+Argument #2 : Keypoint of Database Image
+Argument #3 : Keypoint of Query Image
+Argument #4 : Descriptors of Database Image
+Argument #5 : Descriptors of Query Image
+
+------------------------------------------------------------------------------------------------------------
+void my_gl ()
+void init_ogl ()
+Initializes glut
+
+--------------------------------------------------------------------------------------------------------------
+
+void try_this ()
+Glut main function
+
+--------------------------------------------------------------------------------------------------------------
+
+int augmentation ( Mat & INPUT , Mat & OUTPUT , Mat & OUTPUT )
+Augmentation of model is done here
+Argument #1 : Background Image
+Argument #2 : Projection Matrix
+Argument #3 : Model View Matrix
+CHILD FUNCTION :
+void generateProjectionModelview ( const Mat & calibration, const Mat & rotation, const Mat &
+translation, Mat & projection, Mat & modelview )
+
+----------------------------------------------------------------------------------------------------------------
+
+void drawStaticGL()
+Draws the model of missing part after the modelview and projection matrices are set.
+
+-----------------------------------------------------------------------------------------------------------------
+
+GLfloat* mat_to_glf ( const Mat & INPUT )
+Converts an OpenCV matrix to OpenGL formated matrix of Float datatype
+Argument #1 : Input Matrix.
+
+------------------------------------------------------------------------------------------------------------------
+
+void render_bg ( const Mat & INPUT )
+Renders an Image as background in OpenGL window
+Argument #1 : Input Image.
+------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+File : classifier_main.cpp
+Accepts an Image as an argument and returns the closest Image from given database Images.
+
+
+------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+File: sift.cpp
+
+generates sift descriptors and keypoints for the two closely matched images.
+
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+
+Module wise explanation (Algorithm)
+1.Q_IMG = Query Image.
+2.D_IMG = Best Database Image [classifier_main.cpp]
+  Generate sift key files using sift.cpp
+3.Call match() to get 2D cordinates of the best matches between the query and database image. 
+4.Call read_key() to get 3D 2D correspondence of D_IMG.
+5. Call OpenGL mail function with given camera parameters.
+    a. Call render_bg(Q_IMG) to render Q_IMG as background image.
+    b. Call generateProjectionModelview() to generate Projection and Modelview matrix
+       from given camera matrices.
+    c. Call drawStaticGL() to Augment the model in the picture.
+    d. Return.
+Module 1 : Find best Image. (Step 2)
+Module 2 : Match the Images and calibrate the camera. (Step 3 , 4)
+Module 3 : Generate the missing part and merge all the images. (Step 5)
+
+
+
+
+
+
