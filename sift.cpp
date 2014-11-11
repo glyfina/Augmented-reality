@@ -21,11 +21,11 @@ int main(int argc, const char* argv[])
 {
 
    
-    cv::Mat input1 = cv::imread("image.jpg",1); //Load as grayscale
+    cv::Mat input1 = cv::imread("image_query.jpg",1); //Load as grayscale
     //cv::cvtColor(input0,input1,CV_BGR2GRAY);
 
     //second input load as grayscale
-   cv::Mat input2 = cv::imread("image1.jpg",1);
+   cv::Mat input2 = cv::imread("image_predicted.jpg",1);
 
 
     cv::SiftFeatureDetector detector;
