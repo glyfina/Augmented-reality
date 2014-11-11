@@ -6,7 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include <cstdio>
-#include<stdio.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <cstdlib>
 #include <string>
@@ -86,7 +86,7 @@ classifier.load("classifier_50.xml");
 //////////////////////////////////////////////////////////
   Mat tryme;
   Mat tryDescriptor;
-  Mat img3 = imread("IMG_13.jpg");
+  Mat img3 = imread("query_image.jpg");
   vector<KeyPoint> keypoints3;
   detector->detect(img3, keypoints3);
 
