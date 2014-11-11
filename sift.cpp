@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <cstdio>
-#include<stdio.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <cstdlib>
 #include <string>
@@ -37,10 +37,7 @@ int main(int argc, const char* argv[])
     cv::Mat output1;
     cv::drawKeypoints(input1, keypoints1, output1);
     cv::imshow("Sift_result1.jpg", output1);
-    //cv::imwrite("Sift_result1.jpg",output1);
-
-
-
+    
     //keypoints array for input 2
     std::vector<cv::KeyPoint> keypoints2;
 
