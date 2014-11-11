@@ -17,10 +17,10 @@ bool keys_compare (Point2f i,Point2f j) { return (i.y<j.y); }
 void print_top_3d ( vector <Point2f> & pts , int n );
 void render_bg ( const Mat& image );
 GLfloat* mat_to_glf ( const Mat& m );
-void drawStaticTeapotGL();
+void drawStaticGL();
 void init_ogl ();
 void generateProjectionModelview ( const Mat& calibration, const Mat& rotation, const Mat& translation, Mat& projection, Mat& modelview );
-int augmentationChess3D ( Mat& image , Mat & proj , Mat & mod );
+int augmentation ( Mat& image , Mat & proj , Mat & mod );
 void try_this ();
 void filter(Mat& image);
 void keyboard_func ( unsigned char key, int x, int y );
@@ -194,7 +194,7 @@ void loadObj( const char *fname)
    fclose(fp);
 }
 
-void drawStaticTeapotGL()
+void drawStaticGL()
 {
        // Set the colour for all new objects.
         glColor3f ( 1.0, 0.88, 0.16 );
@@ -347,7 +347,7 @@ void keyboard_func ( unsigned char key, int x, int y )
         glutPostRedisplay();
 }
 
-int augmentationChess3D ( Mat& image , Mat & proj , Mat & mod )
+int augmentation ( Mat& image , Mat & proj , Mat & mod )
 {
         proj.create ( 4, 4, CV_64FC1 );
         mod.create ( 4, 4, CV_64FC1 );
@@ -377,7 +377,7 @@ void try_this ()
 
        
        render_bg ( image_q );
-       augmentationChess3D ( image_q , proj , mod );
+       augmentation ( image_q , proj , mod );
        
 
         glMatrixMode ( GL_PROJECTION );
@@ -409,7 +409,7 @@ void try_this ()
 
         
         
-        drawStaticTeapotGL();
+        drawStaticGL();
                 
         glFlush();
         glutSwapBuffers();
